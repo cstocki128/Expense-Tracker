@@ -1,27 +1,25 @@
-package com.proyecto.finanzasPersonales.service;
+package com.proyecto.finanzasPersonales.service.impl;
 
 import com.proyecto.finanzasPersonales.repository.ExpenseRepository;
-import com.proyecto.finanzasPersonales.service.impl.ExpenseServiceImpl;
+import com.proyecto.finanzasPersonales.service.ExpenseService;
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
+@SpringBootTest
 public class ExpenseServiceTest {
-    @Mock
-    private ExpenseRepository expenseDaoMock;
+    @MockBean
+    private ExpenseRepository expenseRepositoryMock;
 
-    @InjectMocks
+    @Autowired
     private ExpenseServiceImpl expenseService;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.initMocks(this); //INICIA MOCKS
-    }
-
     @Test
-    @DisplayName("addExpenseTest.GetExpenses() - Test")
+    @DisplayName("ExpenseService.GetExpenses() - Test")
     public void addExpenseTest() throws Exception {
         //GIVEN
         long id = 0;

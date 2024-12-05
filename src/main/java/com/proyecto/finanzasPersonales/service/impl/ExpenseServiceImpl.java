@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,22 +35,22 @@ public class ExpenseServiceImpl<T extends Expense> implements ExpenseService {
     }
 
     @Override
-    public ArrayList<ResponseExpenseDTO> getExpensesByUser(Long userId) throws Exception{
+    public List<ResponseExpenseDTO> getExpensesByUser(Long userId) throws Exception{
         log.debug("ExpenseService-getExpensesByUser executed");
         User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found"));
         List<Expense> expenses = expenseRepository.findByUser(user);
         return expenses.stream()
                 .map(this::fromExpenseToResponseExpenseDTO)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     @Override
-    public ArrayList<ResponseExpenseDTO> getExpenses() throws Exception{
+    public List<ResponseExpenseDTO> getExpenses() throws Exception{
         log.debug("ExpenseService-getExpenses executed");
         List<Expense> expenses = expenseRepository.findAll();
         return expenses.stream()
                 .map(this::fromExpenseToResponseExpenseDTO)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -87,20 +87,20 @@ public class ExpenseServiceImpl<T extends Expense> implements ExpenseService {
     }
 
     @Override
-    public ArrayList<ResponseExpenseDTO> getExpensesByDate(LocalDate date) throws Exception{
+    public List<ResponseExpenseDTO> getExpensesByDate(LocalDate date) throws Exception{
         log.debug("ExpenseService-getExpensesByDate executed");
         return expenseRepository.findByDate(date).stream()
                 .map(this::fromExpenseToResponseExpenseDTO)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     @Override
-    public ArrayList<ResponseExpenseDTO> getExpensesByCategory(Long id) throws Exception{
+    public List<ResponseExpenseDTO> getExpensesByCategory(Long id) throws Exception{
         log.debug("ExpenseService-getExpensesByCategory executed");
         Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
         return expenseRepository.findByCategory(category).stream()
                 .map(this::fromExpenseToResponseExpenseDTO)
-                .collect(Collectors.toCollection(ArrayList::new));
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/expenseTracker")
-public class ExpenseTrackerRESTController <T extends Object> {
+public class ExpenseTrackerRESTController <T extends Object> { //ctrl + shift + T --> crear test
     ExpenseService expenseService;
     UserService userService;
 
