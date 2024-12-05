@@ -21,5 +21,5 @@ public interface ExpenseService {
     public void deleteExpenseCategory(long id) throws Exception;
     public ArrayList<ResponseExpenseDTO> getExpensesByDate(LocalDate date) throws Exception;
     public ArrayList<ResponseExpenseDTO> getExpensesByCategory( Long id) throws Exception;
-    public double getTotalAmountExpenses(Long userId) throws Exception;
+    public Double getTotalAmountExpenses(Long userId) throws Exception;
 }

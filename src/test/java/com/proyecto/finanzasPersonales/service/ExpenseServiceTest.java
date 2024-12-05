@@ -24,14 +24,15 @@ public class ExpenseServiceTest {
     @DisplayName("addExpenseTest.GetExpenses() - Test")
     public void addExpenseTest() throws Exception {
         //GIVEN
+        long id = 0;
         ExpenseService expenseServiceMock = Mockito.mock(ExpenseServiceImpl.class);
-        Mockito.when(expenseServiceMock.getTotalAmountExpenses(0)).thenReturn(1000.0);
+        Mockito.when(expenseServiceMock.getTotalAmountExpenses(id)).thenReturn(1000.0);
 
         //WHEN
 
         //THEN
-        Assertions.assertEquals(1000.0,expenseServiceMock.getTotalAmountExpenses(0));
-        Mockito.verify(expenseServiceMock,Mockito.atLeastOnce()).getTotalAmountExpenses(0);
+        Assertions.assertEquals(1000.0,expenseServiceMock.getTotalAmountExpenses(id));
+        Mockito.verify(expenseServiceMock,Mockito.atLeastOnce()).getTotalAmountExpenses(id);
 
 
     }

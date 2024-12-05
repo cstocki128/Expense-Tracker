@@ -104,7 +104,7 @@ public class ExpenseServiceImpl<T extends Expense> implements ExpenseService {
     }
 
     @Override
-    public double getTotalAmountExpenses(Long userId) throws Exception{
+    public Double getTotalAmountExpenses(Long userId) throws Exception{
         log.debug("ExpenseService-getTotalAmountExpenses executed");
         return this.getExpensesByUser(userId).stream()
                 .mapToDouble(ResponseExpenseDTO::getAmount)
