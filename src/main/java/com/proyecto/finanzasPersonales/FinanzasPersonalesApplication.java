@@ -1,6 +1,5 @@
 package com.proyecto.finanzasPersonales;
 
-import com.proyecto.finanzasPersonales.controller.ExpenseTrackerRESTController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

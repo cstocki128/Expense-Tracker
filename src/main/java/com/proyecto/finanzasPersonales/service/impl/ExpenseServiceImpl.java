@@ -134,7 +134,7 @@ public class ExpenseServiceImpl<T extends Expense> implements ExpenseService {
     @Override
     public void deleteExpenseCategory(long id) throws Exception {
         log.debug("ExpenseService-deleteExpenseCategory executed");
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
+        categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category not found"));
         categoryRepository.deleteById(id);
     }
 

@@ -1,10 +1,7 @@
 package com.proyecto.finanzasPersonales.service.impl;
 
 import com.proyecto.finanzasPersonales.controller.dto.UserDTO;
-import com.proyecto.finanzasPersonales.entity.Category;
-import com.proyecto.finanzasPersonales.entity.Expense;
 import com.proyecto.finanzasPersonales.entity.User;
-import com.proyecto.finanzasPersonales.entity.exception.ExpenseNotFoundException;
 import com.proyecto.finanzasPersonales.entity.exception.UserNotFoundException;
 import com.proyecto.finanzasPersonales.repository.UserRepository;
 import com.proyecto.finanzasPersonales.service.UserService;
@@ -50,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) throws Exception {
         log.debug("UserService-delete executed");
-        User user =  userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
+        userRepository.findById(id).orElseThrow(() -> new UserNotFoundException("User not found"));
         userRepository.deleteById(id);
     }
 
