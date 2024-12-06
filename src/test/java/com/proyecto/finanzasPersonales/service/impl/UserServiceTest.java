@@ -52,7 +52,21 @@ public class UserServiceTest {
         assertEquals("Matias Stocki", userDTO.getName());
         assertEquals("cstocki128@gmail.com", userDTO.getEmail());
         verify(userRepositoryMock, atMostOnce()).findById(id);
+    }
 
+    @Test
+    @DisplayName("UserService.create() - TEST")
+    void create() throws Exception {
+        //GIVEN
+        UserDTO userDTO = UserDTO.builder().name("Matias").email("email@email.com").build();
+        UserDTO userNotInitialized = null;
+
+        //WHEN
+        when(userRepositoryMock.save(userSample)).thenReturn(userSample);
+        userServiceImpl.create(userDTO);
+
+        //THEN
+        verify(userRepositoryMock,atMostOnce()).save(userSample);
     }
 
 }
